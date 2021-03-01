@@ -1,0 +1,51 @@
+<div class="items-center justify-center flex h-5/6">
+    <div class="bg-gray-50 p-5">
+
+        <mat-form-field class="example-form-field">
+            <mat-label>Nom</mat-label>
+            <input matInput type="text" [(ngModel)]="nom">
+            <!-- <button mat-button *ngIf="nom" matSuffix mat-icon-button (click)="nom=''">
+              <mat-icon>close</mat-icon>
+            </button> -->
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="example-form-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [(ngModel)]="email">
+            <!-- <button mat-button *ngIf="email" matSuffix mat-icon-button (click)="email=''">
+              <mat-icon>close</mat-icon>
+            </button> -->
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+            <mat-label>Mot de passe</mat-label>
+            <input matInput [type]="hide1 ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide1 = !hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+            <mat-label>Confirmer mot de passe</mat-label>
+            <input matInput [type]="hide2 ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2">
+                <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <p class="text-center">
+            Déja un compte ?
+            <br>
+            <button routerLink="/login">Se connecter</button>
+        </p>
+        <br>
+
+        <button (click)='register()' class="w-full" mat-raised-button>S'inscrire</button>
+
+    </div>
+</div>
