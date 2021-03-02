@@ -1,3 +1,39 @@
+data {{data.ip}}
+
 <div class="items-center justify-center flex h-5/6">
-    test
+    <div class="bg-gray-50 p-5 rounded-lg w-1/6">
+
+        <div style="position: relative; top: -5vh" class="bg-blue-700 text-center py-3 w-4/6 mx-auto">
+            <p class="text-2xl">Connexion</p>
+        </div>
+
+        <mat-form-field class="w-full pt-0">
+            <mat-label>Nom / Email</mat-label>
+            <input matInput type="text" [(ngModel)]="nomEmail" required>
+            <!-- <button mat-button *ngIf="nom" matSuffix mat-icon-button (click)="nom=''">
+              <mat-icon>close</mat-icon>
+            </button> -->
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="w-full">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput [type]="hide1 ? 'password' : 'text'" [(ngModel)]="password" [formControl]="passwordcheck" required>
+            <mat-error *ngIf="passwordcheck.invalid">{{getErrorMessagePassword()}}</mat-error>
+            <button mat-icon-button matSuffix (click)="hide1 = !hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <br>
+
+        <p class="text-center text-gray-500 mt-5">
+            Pas de compte ?
+            <br>
+            <button class="text-gray-700" routerLink="/register">Créer un compte</button>
+        </p>
+        <br>
+
+        <button (click)='login()' class="w-full" mat-raised-button>Connexion</button>
+
+    </div>
 </div>
