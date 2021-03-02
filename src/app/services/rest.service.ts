@@ -10,6 +10,8 @@ import { environment } from '../../environments/environment';
 })
 export class RESTService {
 
+  isAuth = false;
+
   httpHeader = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

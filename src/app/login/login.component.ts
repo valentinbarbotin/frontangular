@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { RESTService } from '../services/rest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -43,16 +44,27 @@ export class LoginComponent implements OnInit {
     if (!check) {
       return
     }
-
-    this.RESTService.GET('login').subscribe(
+    
+    var dataPOST = {
+      'nomEmail': this.nomEmail,
+      'password': this.password
+    };
+    this.RESTService.POST('users/login',dataPOST).subscribe(
       response => {
-          this.data = response;
-      })
-
+        this.data = response;
+        if (this.data['login']) {
+          alert(this.data['message'])
+          this.RESTService.isAuth = true;
+          this.Router.navigate(['/']);
+        } else {
+          alert(this.data['message'])
+        }
+    })
   }
 
   constructor(
-    private RESTService: RESTService
+    private RESTService: RESTService,
+    private Router: Router
   ) { }
 
   ngOnInit(): void {

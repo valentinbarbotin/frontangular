@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://ip.jsontest.com/'
+  api: 'http://localhost:8090/API/'
 };
 
 /*

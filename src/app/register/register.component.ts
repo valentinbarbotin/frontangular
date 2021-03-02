@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { RESTService } from '../services/rest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -72,14 +73,27 @@ export class RegisterComponent implements OnInit {
       return
     }
     
-    var dataPOST = {};
-    this.RESTService.POST('register',dataPOST).subscribe(
+    var dataPOST = {
+      'user': this.nom,
+      'password': this.password1,
+      'email': this.email
+    };
+    this.RESTService.POST('users/register',dataPOST).subscribe(
       response => {
-          this.data = response;
-      })
+        this.data = response;
+        if (this.data['register']) {
+          alert(this.data['message'])
+          this.Router.navigate(['/']);
+        } else {
+          alert(this.data['message'])
+        }
+    })
   }
 
-  constructor(private RESTService: RESTService) { }
+  constructor(
+    private RESTService: RESTService,
+    private Router: Router
+  ) { }
 
   ngOnInit(): void {
   }
