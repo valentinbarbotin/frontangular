@@ -2,11 +2,10 @@
     <div>LOGO</div>
     <div class="flex">
         <div class="flex-auto py-2 mr-9">
-            <a class="mx-3 text-xl text-gray-100" routerLink="/catalogue">Catalogue</a>
+            <a class="mx-3 text-xl text-gray-100 hover:text-blue-500" routerLink="">Catalogue</a>
             <!-- <a class="mx-3 text-xl text-gray-100" routerLink="/espacemembre">Espace membre</a> -->
             <div class="relative inline-block text-left">
-                  <button (focus)="setFocusDropdownMembre(true)" (focusout)="setFocusDropdownMembre(false)" type="button" class="inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-xl text-gray-100" id="options-menu">
-                    <!-- <button (click)="clickEspaceMembre()" type="button" class="inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-xl text-gray-100" id="options-menu"> -->
+                  <button (focus)="setFocusDropdownMembre(true)" (focusout)="setFocusDropdownMembre(false)" type="button" class="inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-xl text-gray-100 hover:text-blue-500" id="options-menu">
                     Espace membre
                     <!-- Heroicon name: solid/chevron-down -->
                     <svg class="-mr-1 ml-2 h-8 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -35,7 +34,7 @@
                 </div>
               </div>
 
-            <a class="mx-3 text-xl text-gray-100" routerLink="/panier">Mon panier</a>
+            <a class="mx-3 text-xl text-gray-100 hover:text-blue-500" routerLink="/panier">Mon panier</a>
         </div>
     </div>
 </div>
@@ -50,5 +49,9 @@
     </div>
 </div> -->
 
-<router-outlet>
-</router-outlet>
+<!-- <div class="items-center justify-center flex h-5/6" [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div> -->
+<div [@routeAnimations]="prepareRoute(outlet)" class="h-5/6" style="overflow-x: hidden;">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

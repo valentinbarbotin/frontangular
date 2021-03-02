@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
+    slideInAnimation,
     trigger('dropdownMembre', [
       state('show', style({
         opacity: 1
@@ -30,7 +33,8 @@ export class AppComponent {
     this.showDropdownMembre = state
   }
 
-  // clickEspaceMembre() {
-  //   this.showDropdownMembre = !this.showDropdownMembre;
-  // }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
 }

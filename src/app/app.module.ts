@@ -52,6 +52,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 
@@ -62,7 +63,8 @@ import { MatTableModule } from '@angular/material/table';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
