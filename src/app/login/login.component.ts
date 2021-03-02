@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       return
     }
 
-    this.RESTService.GET().subscribe(
+    this.RESTService.GET('login').subscribe(
       response => {
           this.data = response;
       })

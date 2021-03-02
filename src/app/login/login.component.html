@@ -14,7 +14,6 @@ data {{data.ip}}
               <mat-icon>close</mat-icon>
             </button> -->
         </mat-form-field>
-        <br>
 
         <mat-form-field class="w-full">
             <mat-label>Mot de passe</mat-label>
@@ -24,14 +23,12 @@ data {{data.ip}}
                 <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
-        <br>
 
-        <p class="text-center text-gray-500 mt-5">
+        <p class="text-center text-gray-500 my-5">
             Pas de compte ?
             <br>
             <button class="text-gray-700" routerLink="/register">Créer un compte</button>
         </p>
-        <br>
 
         <button (click)='login()' class="w-full" mat-raised-button>Connexion</button>
 

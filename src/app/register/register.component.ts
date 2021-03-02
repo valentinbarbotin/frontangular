@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { RESTService } from '../services/rest.service';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ export class RegisterComponent implements OnInit {
   email = "";
   hide1 = true;
   hide2 = true;
+  data: any = [];
 
   emailcheck = new FormControl('', [
     Validators.required,
@@ -69,11 +71,15 @@ export class RegisterComponent implements OnInit {
     if (!check) {
       return
     }
-
-    alert("ok")
+    
+    var dataPOST = {};
+    this.RESTService.POST('register',dataPOST).subscribe(
+      response => {
+          this.data = response;
+      })
   }
 
-  constructor() { }
+  constructor(private RESTService: RESTService) { }
 
   ngOnInit(): void {
   }
