@@ -13,26 +13,6 @@ export class RESTService {
   isAuth = false;
   token = "";
 
-  // getHeaders() {
-  //   var headers:any = {
-  //     'Content-Type': 'application/json',
-  //   };
-
-  //   if (this.token != "") {
-  //     console.log("ajout token header")
-  //     headers['Authorization'] = this.token;
-  //   } else {
-  //     console.log("pas de token")
-  //   }
-
-  //   return headers
-  // };
-
-  // httpHeader = {
-  //   headers: new HttpHeaders(this.getHeaders())
-  // }
-
-
   getHeaders() {
     var headers:any = {
       'Content-Type': 'application/json'

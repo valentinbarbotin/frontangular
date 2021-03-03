@@ -27,11 +27,12 @@ export class AppComponent {
   showDropdownMembre = false;
 
   isAuth() {
-    return this.RESTService.isAuth;
+    return this.RESTService.isAuth && (this.RESTService.token != "");
   }
 
   logout() {
     this.RESTService.isAuth = false;
+    this.RESTService.token = "";
   }
 
   get etatDropdownMembre() {
