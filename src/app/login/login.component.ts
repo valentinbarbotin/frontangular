@@ -53,8 +53,13 @@ export class LoginComponent implements OnInit {
       response => {
         this.data = response;
         if (this.data['login']) {
-          alert(this.data['message'])
+          // alert(this.data['message'])
           this.RESTService.isAuth = true;
+          if (this.data['token']) {
+            this.RESTService.token = this.data['token'];
+            alert("token="+this.RESTService.token)
+            console.log("token="+this.RESTService.token)
+          }
           this.Router.navigate(['/']);
         } else {
           alert(this.data['message'])

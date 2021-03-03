@@ -11,17 +11,47 @@ import { environment } from '../../environments/environment';
 export class RESTService {
 
   isAuth = false;
+  token = "";
 
-  httpHeader = {
-    headers: new HttpHeaders({
+  // getHeaders() {
+  //   var headers:any = {
+  //     'Content-Type': 'application/json',
+  //   };
+
+  //   if (this.token != "") {
+  //     console.log("ajout token header")
+  //     headers['Authorization'] = this.token;
+  //   } else {
+  //     console.log("pas de token")
+  //   }
+
+  //   return headers
+  // };
+
+  // httpHeader = {
+  //   headers: new HttpHeaders(this.getHeaders())
+  // }
+
+
+  getHeaders() {
+    var headers:any = {
       'Content-Type': 'application/json'
-    })
-  }
+    };
+
+    if (this.token != "") {
+      console.log("ajout token header")
+      headers['Authorization'] = `Bearer ${this.token}`;
+    } else {
+      console.log("pas de token")
+    }
+
+    return headers
+  };
   
   GET(endpoint: string) {
     return this.http.get<any[]>(
       environment.api+endpoint,
-      this.httpHeader
+      {headers: new HttpHeaders(this.getHeaders())}
       );
   }
 
@@ -29,14 +59,14 @@ export class RESTService {
     return this.http.post<any[]>(
       environment.api+endpoint,
       data,
-      this.httpHeader
+      {headers: new HttpHeaders(this.getHeaders())}
       );
   }
 
   DELETE(endpoint: string) {
     return this.http.delete<any[]>(
       environment.api+endpoint,
-      this.httpHeader
+      {headers: new HttpHeaders(this.getHeaders())}
       );
   }
   
