@@ -2,8 +2,12 @@
     <h1 class="text-gray-50 text-xl">Titre</h1>
     <h1 class="text-gray-50 text-3xl">Message</h1>
         <button (click)="makeGET()">Test GET</button>
-
-        <input type="file" multiple (change)="selectFiles($event)"> 
+    
+        <label for="upload">
+            <span>AJOUT</span>
+            <input id="upload" hidden type="file" multiple (change)="selectFiles($event)"> 
+        </label>
+      
         <button (click)="upload()">Upload</button>
         <h1 class="text-gray-50 text-xl">Upload = {{ progression }} Upload done = {{ uploadDone }}</h1>
 </div>
