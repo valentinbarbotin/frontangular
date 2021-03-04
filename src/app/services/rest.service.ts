@@ -15,7 +15,7 @@ export class RESTService {
 
   getHeaders() {
     var headers:any = {
-      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/json'
     };
 
     if (this.token != "") {
@@ -39,7 +39,12 @@ export class RESTService {
     return this.http.post<any[]>(
       environment.api+endpoint,
       data,
-      {headers: new HttpHeaders(this.getHeaders())}
+      {
+        headers: new HttpHeaders(this.getHeaders()),
+        reportProgress: true,
+        responseType: 'json',
+        observe: 'events'
+      }
       );
   }
 
@@ -51,6 +56,6 @@ export class RESTService {
   }
   
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { }
 }
