@@ -82,6 +82,7 @@ export class AccueilComponent implements OnInit {
     this.uploadFile(this.file)
   }
 
+
   constructor(
     private RESTService: RESTService
   ) { }

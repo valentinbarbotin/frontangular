@@ -25,6 +25,7 @@ import { RESTService } from './services/rest.service';
 export class AppComponent {
   title = 'scrypteur';
   showDropdownMembre = false;
+  showDropdownNav = "menu";
 
   isAuth() {
     return this.RESTService.isAuth && (this.RESTService.token != "");
@@ -33,6 +34,16 @@ export class AppComponent {
   logout() {
     this.RESTService.isAuth = false;
     this.RESTService.token = "";
+  }
+
+  toggleDropdownNav() {
+    if (this.showDropdownNav == "menu") {
+      this.showDropdownNav = "menu_open"
+      this.showDropdownMembre = true
+    } else {
+      this.showDropdownNav = "menu"
+      this.showDropdownMembre = false
+    }
   }
 
   get etatDropdownMembre() {
