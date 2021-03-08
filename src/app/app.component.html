@@ -49,13 +49,13 @@
         </div>
 
       </div>
-      <a *ngIf="isAuth()" class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="/panier">{{ 'PANIER' | translate }}<mat-icon class="align-bottom text-gray-100">shopping_cart</mat-icon></a>
-      <div class="inline-block">
-        <button (click)="showDropdownLang = !showDropdownLang" type="button" class="focus:outline-none md:inline-block hidden text-xl text-gray-100 hover:text-blue-500">
+      <a *ngIf="isAuth()" class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="/panier">{{ 'PANIER' | translate }}<mat-icon class="align-bottom ml-3 text-gray-100">shopping_cart</mat-icon></a>
+      <div (mouseleave)="showDropdownLang = false" class="inline-block">
+        <button (mouseenter)="showDropdownLang = true" type="button" class="focus:outline-none md:inline-block hidden text-xl text-gray-100 hover:text-blue-500">
           <mat-icon class="align-bottom text-gray-100">language</mat-icon>
         </button>
   
-        <div *ngIf="etatDropdownLang == 'show'" [@dropdownLang]="etatDropdownLang" class="hidden md:block mt-3 absolute rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div *ngIf="etatDropdownLang == 'show'" [@dropdownLang]="etatDropdownLang" class="hidden md:block absolute rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div role="menu">
 
             <!-- <select #langSelect (change)="changeLang(langSelect.value)">  

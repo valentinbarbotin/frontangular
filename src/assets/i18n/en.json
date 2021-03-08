@@ -1,6 +1,6 @@
 {
     "HOME": "Home",
-    "CATALOGUE": "Catalogue",
+    "CATALOGUE": "Catalog",
     "ESPACE MEMBRE": "Member area",
     "PANIER": "Cart",
     "TITRE": "Shop",
@@ -20,6 +20,5 @@
     "CONFIRMPASSWORD": "Confirm password",
     "NO ACCOUNT": "No account ?",
     "HAVE ACCOUNT": "Already an account ?",
-    "CREATE ACCOUNT": "Register",
-    "GO LOGIN": "Login"
+    "CREATE ACCOUNT": "Register"
 }

@@ -11,15 +11,14 @@
     "DESCRIPTION": "Description",
     "AJOUTER": "Ajouter",
 
-    "LOGIN": "Login",
-    "REGISTER": "Register",
-    "LOGOUT": "Logout",
+    "LOGIN": "Se connecter",
+    "REGISTER": "S'inscrire",
+    "LOGOUT": "Se deconnecter",
     
     "EMAIL": "Email",
     "PASSWORD": "Mot de passe",
     "CONFIRMPASSWORD": "Confirmer le mot de passe",
     "NO ACCOUNT": "Pas de compte ?",
     "HAVE ACCOUNT": "Déja un compte ?",
-    "CREATE ACCOUNT": "Créer un compte",
-    "GO LOGIN": "Se connecter"
+    "CREATE ACCOUNT": "Créer un compte"
 }

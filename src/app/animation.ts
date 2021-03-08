@@ -2,7 +2,8 @@ import { trigger, state, style, animate, transition, query, animateChild, group 
 
 export const slideInAnimation =
   trigger('routeAnimations', [
-    transition('login <=> register', [
+    transition('* <=> *', [
+    // transition('login <=> register', [
       style({ position: 'relative' }),
       query(':enter, :leave', [
         style({

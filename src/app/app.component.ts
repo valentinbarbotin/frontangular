@@ -36,7 +36,7 @@ import {TranslateService} from '@ngx-translate/core';
   ]
 })
 export class AppComponent {
-  title = 'scrypteur';
+  title = 'Shop4u';
   showDropdownNav = "menu";
   showDropdownMembre = false;
   showDropdownLang = false;
