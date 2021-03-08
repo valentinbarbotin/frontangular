@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    var data = [this.nomEmail,this.password];
+    var data = [this.nomEmail, this.password];
     var check = true;
     data.forEach(element => {
       if (element === '') {
@@ -44,27 +44,32 @@ export class LoginComponent implements OnInit {
     if (!check) {
       return
     }
-    
+
     var dataPOST = {
       'nomEmail': this.nomEmail,
       'password': this.password
     };
-    this.RESTService.POST('users/login',dataPOST).subscribe(
+
+    this.RESTService.POST('users/login', dataPOST).subscribe(
       response => {
         this.data = response;
+        console.log(response)
         if (this.data['login']) {
-          // alert(this.data['message'])
+          console.log("connecte")
           this.RESTService.isAuth = true;
           if (this.data['token']) {
             this.RESTService.token = this.data['token'];
-            alert("token="+this.RESTService.token)
-            console.log("token="+this.RESTService.token)
           }
           this.Router.navigate(['/']);
         } else {
-          alert(this.data['message'])
+          console.log("in progress")
         }
-    })
+      },
+      error => {
+        console.log(error)
+      }
+    )
+
   }
 
   constructor(

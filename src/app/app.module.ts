@@ -53,6 +53,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { AccueilComponent } from './accueil/accueil.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -64,7 +66,9 @@ import { AccueilComponent } from './accueil/accueil.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AccueilComponent
+    AccueilComponent,
+    CatalogueComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,

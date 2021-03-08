@@ -13,9 +13,10 @@ export class RESTService {
   isAuth = false;
   token = "";
 
-  getHeaders() {
+  getHeaders(options?: Object) {
     var headers:any = {
       // 'Content-Type': 'application/json'
+      responseType: 'json',
     };
 
     if (this.token != "") {
@@ -24,6 +25,8 @@ export class RESTService {
     } else {
       console.log("pas de token")
     }
+
+    //ajout gestion options (events)
 
     return headers
   };
@@ -35,15 +38,15 @@ export class RESTService {
       );
   }
 
-  POST(endpoint: string, data: Object) {
+  POST(endpoint: string, data: Object, options?: Object) {
+
     return this.http.post<any[]>(
       environment.api+endpoint,
       data,
       {
-        headers: new HttpHeaders(this.getHeaders()),
+        headers: new HttpHeaders(this.getHeaders(options)),
         reportProgress: true,
-        responseType: 'json',
-        observe: 'events'
+        // observe: 'events'
       }
       );
   }

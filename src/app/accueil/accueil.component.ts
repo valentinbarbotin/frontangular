@@ -1,5 +1,6 @@
 import { HttpEventType, HttpHeaderResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
 import { RESTService } from '../services/rest.service';
 
 @Component({
@@ -14,17 +15,42 @@ export class AccueilComponent implements OnInit {
   uploadDone = false;
   file?: File | null;
 
+  testObservable() {
+    const myObservable = of(1, 2, 3);
+
+    const myObserver = {
+      next: (x: any) => console.log('Observer got a next value: ' + x),
+      error: (err: any) => console.error('Observer got an error: ' + err),
+      complete: () => console.log('Observer got a complete notification'),
+    };
+
+    myObservable.subscribe(
+      {
+        next: (x: any) => console.log('Observer got a next value: ' + x),
+        error: (err: any) => console.error('Observer got an error: ' + err),
+        complete: () => console.log('Observer got a complete notification'),
+      }
+    );
+    
+  }
+
+
   makeGET() {
     console.log("requete go")
 
     this.RESTService.GET('test').subscribe(
-      response => {
-        console.log(response)
-        alert(response)
+      next => {
+        console.log('progress')
+        console.log(next)
+        // alert(response)
       },
       error => {
+        console.log('error')
         console.log(error.error.error)
-        alert(error.error.error)
+        // alert(error.error.error)
+      },
+      () => {
+        console.log('complete')
       }
     )
 
@@ -56,7 +82,7 @@ export class AccueilComponent implements OnInit {
       //   }
       // )
 
-      this.RESTService.POST('users/upload', formData).subscribe(
+      this.RESTService.POST('users/upload', formData, {observe: 'events'} ).subscribe(
         (reponse: any) => {
           console.log("reponse")
           console.log(reponse)

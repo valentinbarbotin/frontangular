@@ -1,0 +1,42 @@
+<div class="items-center justify-center flex h-full">
+    <div class="bg-gray-50 py-8 px-5 w-3/4 rounded-lg mx-5">
+        
+        <h1 class="text-2xl">Catalogue</h1>
+
+        <table class="table-fixed mt-10">
+            <thead>
+              <tr>
+                <th class="text-left px-5 py-2 w-1/5"></th>
+                <th class="text-left px-5 py-2 w-1/6">Nom</th>
+                <th class="text-left px-5 py-2 w-1/6">Prix</th>
+                <th class="text-left px-5 py-2">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr style="border-top-width: 1px; border-bottom-width: 1px" *ngFor="let produit of produits">
+                    <td class="break-all"><img class="h-40 mx-auto py-2 " src="{{produit.img}}"></td>
+                    <td class="px-5 break-all py-2 ">
+                        <p class="mb-2">{{produit.nom}}</p>
+                        <button class="w-3/5 mx-auto" mat-raised-button color="primary">Ajouter</button>
+                    </td>
+                    <td class="px-5 break-all">{{produit.prix}} €</td>
+                    <td class="px-5 break-all py-2">{{produit.description}}</td>
+                </tr>
+            </tbody>
+            <!-- <tbody>
+              <tr *ngFor="let produit of produits">
+                <td><img class="w-100 h-auto max-w-md" src="{{produit.img}}"></td>
+                <td class="p-4">
+                    <div>
+                        <h2 class="text-xl">{{produit.nom}}</h2>
+                        <button mat-raised-button color="primary">Ajouter</button>
+                    </div>
+                </td>
+                <td class="p-4">{{produit.prix}} €</td>
+                <td class="p-4 max-w-md">{{produit.description}}</td>
+              </tr>
+            </tbody> -->
+          </table>
+
+    </div>
+</div>

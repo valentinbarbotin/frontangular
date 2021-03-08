@@ -19,13 +19,56 @@ import { RESTService } from './services/rest.service';
       })),
       transition('show <=> hide', animate('200ms ease-out')),
       // transition('hide => show', animate('200ms ease-in'))
+    ]),
+
+    trigger('dropdownLang', [
+      state('show', style({
+        opacity: 1
+      })),
+      state('hide', style({
+        opacity: 0
+      })),
+      transition('show <=> hide', animate('200ms ease-out')),
+      // transition('hide => show', animate('200ms ease-in'))
     ])
   ]
 })
 export class AppComponent {
   title = 'scrypteur';
-  showDropdownMembre = false;
   showDropdownNav = "menu";
+  showDropdownMembre = false;
+  showDropdownLang = false;
+  lang = "fr";
+
+  // localization = {
+  //   fr: {
+  //     home: "Accueil",
+  //     catalogue: "Catalogue",
+  //     espaceMembre: "Espace membre",
+  //     panier: "Mon panier",
+  //   },
+  //   en: {
+  //     home: "Home",
+  //     catalogue: "Catalogue",
+  //     espaceMembre: "Member area",
+  //     panier: "Cart",
+  //   }
+  // }
+
+  localization = {
+    [this.lang]: {
+      home: "Accueil",
+      catalogue: "Catalogue",
+      espaceMembre: "Espace membre",
+      panier: "Mon panier",
+    },
+    [this.lang]: {
+      home: "Home",
+      catalogue: "Catalogue",
+      espaceMembre: "Member area",
+      panier: "Cart",
+    }
+  }
 
   isAuth() {
     return this.RESTService.isAuth && (this.RESTService.token != "");
@@ -46,8 +89,23 @@ export class AppComponent {
     }
   }
 
+  switchLang(lang: string) {
+    switch (lang) {
+      case "fr":
+        this.lang = "fr"
+        break;
+      case "en":
+        this.lang = "en"
+        break;
+    }
+  }
+
   get etatDropdownMembre() {
     return this.showDropdownMembre ? 'show' : 'hide'
+  }
+
+  get etatDropdownLang() {
+    return this.showDropdownLang ? 'show' : 'hide'
   }
 
   setFocusDropdownMembre(state: boolean) {
