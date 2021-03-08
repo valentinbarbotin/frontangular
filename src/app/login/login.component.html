@@ -2,11 +2,11 @@
     <div class="bg-gray-50 p-5 rounded-lg mx-5 w-auto max-w-md">
 
         <div style="position: relative" class="bg-blue-700 text-center py-3 w-4/6 mx-auto -top-10">
-            <p class="text-2xl">Connexion</p>
+            <p class="text-2xl">{{ 'LOGIN' | translate }}</p>
         </div>
 
         <mat-form-field class="w-full pt-0">
-            <mat-label>Nom / Email</mat-label>
+            <mat-label>{{ 'NAME' | translate }} / {{ 'EMAIL' | translate }}</mat-label>
             <input matInput type="text" [(ngModel)]="nomEmail" required>
             <!-- <button mat-button *ngIf="nom" matSuffix mat-icon-button (click)="nom=''">
               <mat-icon>close</mat-icon>
@@ -14,7 +14,7 @@
         </mat-form-field>
 
         <mat-form-field class="w-full">
-            <mat-label>Mot de passe</mat-label>
+            <mat-label>{{ 'PASSWORD' | translate }}</mat-label>
             <input matInput [type]="hide1 ? 'password' : 'text'" [(ngModel)]="password" [formControl]="passwordcheck" required>
             <mat-error *ngIf="passwordcheck.invalid">{{getErrorMessagePassword()}}</mat-error>
             <button mat-icon-button matSuffix (click)="hide1 = !hide1">
@@ -23,12 +23,12 @@
         </mat-form-field>
 
         <p class="text-center text-gray-500 my-5">
-            Pas de compte ?
+            {{ 'NO ACCOUNT' | translate }}
             <br>
-            <button class="text-gray-700" routerLink="/register">Créer un compte</button>
+            <button class="text-gray-700" routerLink="/register">{{ 'REGISTER' | translate }}</button>
         </p>
 
-        <button (click)='login()' class="w-full" mat-raised-button>Connexion</button>
+        <button (click)='login()' class="w-full" mat-raised-button>{{ 'LOGIN' | translate }}</button>
 
     </div>
 </div>

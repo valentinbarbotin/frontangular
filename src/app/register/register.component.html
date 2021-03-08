@@ -2,11 +2,11 @@
     <div class="bg-gray-50 p-5 rounded-lg mx-5 w-auto max-w-md">
 
         <div style="position: relative" class="bg-blue-700 text-center py-3 w-4/6 mx-auto -top-10">
-            <p class="text-2xl">Inscription</p>
+            <p class="text-2xl">{{ 'REGISTER' | translate }}</p>
         </div>
 
         <mat-form-field class="w-full pt-0">
-            <mat-label>Nom</mat-label>
+            <mat-label>{{ 'NAME' | translate }}</mat-label>
             <input matInput type="text" [(ngModel)]="nom" required>
             <!-- <button mat-button *ngIf="nom" matSuffix mat-icon-button (click)="nom=''">
               <mat-icon>close</mat-icon>
@@ -14,7 +14,7 @@
         </mat-form-field>
 
         <mat-form-field class="w-full">
-            <mat-label>Email</mat-label>
+            <mat-label>{{ 'EMAIL' | translate }}</mat-label>
             <input matInput type="email" [(ngModel)]="email" [formControl]="emailcheck" required>
             <mat-error *ngIf="emailcheck.invalid">{{getErrorMessageEmail()}}</mat-error>
             <!-- <button mat-button *ngIf="email" matSuffix mat-icon-button (click)="email=''">
@@ -23,7 +23,7 @@
         </mat-form-field>
 
         <mat-form-field class="w-full">
-            <mat-label>Mot de passe</mat-label>
+            <mat-label>{{ 'PASSWORD' | translate }}</mat-label>
             <input matInput [type]="hide1 ? 'password' : 'text'" [(ngModel)]="password1" [formControl]="passwordcheck1" required>
             <mat-error *ngIf="passwordcheck1.invalid">{{getErrorMessagePassword1()}}</mat-error>
             <button mat-icon-button matSuffix (click)="hide1 = !hide1">
@@ -32,7 +32,7 @@
         </mat-form-field>
 
         <mat-form-field class="w-full">
-            <mat-label>Confirmer mot de passe</mat-label>
+            <mat-label>{{ 'CONFIRMPASSWORD' | translate }}</mat-label>
             <input matInput [type]="hide1 ? 'password' : 'text'" [(ngModel)]="password2" [formControl]="passwordcheck2" required>
             <mat-error *ngIf="passwordcheck2.invalid">{{getErrorMessagePassword2()}}</mat-error>
             <button mat-icon-button matSuffix (click)="hide1 = !hide1">
@@ -41,12 +41,12 @@
         </mat-form-field>
 
         <p class="text-center text-gray-500 my-5">
-            Déja un compte ?
+            {{ 'HAVE ACCOUNT' | translate }}
             <br>
-            <button class="text-gray-700" routerLink="/login">Se connecter</button>
+            <button class="text-gray-700" routerLink="/login">{{ 'LOGIN' | translate }}</button>
         </p>
 
-        <button (click)='register()' class="w-full" mat-raised-button>S'inscrire</button>
+        <button (click)='register()' class="w-full" mat-raised-button>{{ 'REGISTER' | translate }}</button>
 
     </div>
 </div>

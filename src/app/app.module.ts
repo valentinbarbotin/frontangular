@@ -55,7 +55,13 @@ import { MatTableModule } from '@angular/material/table';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { PanierComponent } from './panier/panier.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 
 
@@ -71,6 +77,14 @@ import { PanierComponent } from './panier/panier.component';
     PanierComponent
   ],
   imports: [
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+    }
+    }),
     BrowserModule,
     HttpClientModule,
     FormsModule,

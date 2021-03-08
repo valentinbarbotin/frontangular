@@ -25,7 +25,6 @@
     </div>
 </header> -->
 
-
 <header class="fondDark w-full shadow-2xl">
   <div class="flex justify-between items-center px-4 py-3 max-w-7xl mx-auto">
     <div>
@@ -35,21 +34,22 @@
       <button (click)="toggleDropdownNav()" class="md:hidden focus:outline-none">
         <mat-icon class="align-bottom text-xl text-gray-100">{{showDropdownNav}}</mat-icon>
       </button>
-      <a class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="" i18n="Home of the website">Accueil</a>
-      <a class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="catalogue" i18n>Catalogue</a>
+      <!-- <a class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="" >Accueil</a> -->
+      <a class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="">{{ 'HOME' | translate }}</a>
+      <a class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="catalogue">{{ 'CATALOGUE' | translate }}</a>
       <div (mouseleave)="setFocusDropdownMembre(false)" class="inline-block">
-        <button (mouseenter)="setFocusDropdownMembre(true)" type="button" class="mx-3 focus:outline-none md:inline-block hidden text-xl text-gray-100 hover:text-blue-500">Espace membre</button>
+        <button (mouseenter)="setFocusDropdownMembre(true)" type="button" class="mx-3 focus:outline-none md:inline-block hidden text-xl text-gray-100 hover:text-blue-500">{{ 'ESPACE MEMBRE' | translate }}</button>
         
         <div *ngIf="etatDropdownMembre == 'show'" [@dropdownMembre]="etatDropdownMembre" class="hidden md:block absolute w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div class="py-1" role="menu">
-            <a *ngIf="!isAuth()" routerLink="login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Se connecter</a>
-            <a *ngIf="!isAuth()" routerLink="register" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">S'inscrire</a>
-            <a *ngIf="isAuth()" (click)="logout()" routerLink="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Se deconnecter</a>
+            <a *ngIf="!isAuth()" routerLink="login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">{{ 'LOGIN' | translate }}</a>
+            <a *ngIf="!isAuth()" routerLink="register" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">{{ 'REGISTER' | translate }}</a>
+            <a *ngIf="isAuth()" (click)="logout()" routerLink="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">{{ 'LOGOUT' | translate }}</a>
           </div>
         </div>
 
       </div>
-      <a *ngIf="isAuth()" class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="/panier">Mon panier <mat-icon class="align-bottom text-gray-100">shopping_cart</mat-icon></a>
+      <a *ngIf="isAuth()" class="mx-3 md:inline-block hidden text-xl text-gray-100 hover:text-blue-500" routerLink="/panier">{{ 'PANIER' | translate }}<mat-icon class="align-bottom text-gray-100">shopping_cart</mat-icon></a>
       <div class="inline-block">
         <button (click)="showDropdownLang = !showDropdownLang" type="button" class="focus:outline-none md:inline-block hidden text-xl text-gray-100 hover:text-blue-500">
           <mat-icon class="align-bottom text-gray-100">language</mat-icon>
@@ -57,6 +57,11 @@
   
         <div *ngIf="etatDropdownLang == 'show'" [@dropdownLang]="etatDropdownLang" class="hidden md:block mt-3 absolute rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div role="menu">
+
+            <!-- <select #langSelect (change)="changeLang(langSelect.value)">  
+              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>  
+            </select> -->
+
             <button (click)="showDropdownLang = !showDropdownLang; switchLang('fr')" class="flex">
               <img class="w-12" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg">
             </button>
@@ -74,16 +79,16 @@
   </div>
   <!-- [ngClass]="['first', 'aa']" -->
   <div class="py-2  md:p-0 md:m-0 absolute fondDark w-full z-50" *ngIf="showDropdownMembre">
-    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="">Accueil</a>
-    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="catalogue">Catalogue</a>
-    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="">Espace membre</a>
-    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="panier">Mon panier</a>
+    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="">{{ 'HOME' | translate }}</a>
+    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="catalogue">{{ 'CATALOGUE' | translate }}</a>
+    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="">{{ 'ESPACE MEMBRE' | translate }}</a>
+    <a class="mx-3 p-1 w-max rounded-md hover:bg-gray-700 hover:text-white md:hidden block text-xl text-gray-100 hover:text-blue-500" routerLink="panier">{{ 'PANIER' | translate }}</a>
   </div>
 
 </header>
 
 
-<p class="xs:text-red-500 sm:text-yellow-500 md:text-green-500 lg:text-blue-500">TAILLE</p>
+<!-- <p class="xs:text-red-500 sm:text-yellow-500 md:text-green-500 lg:text-blue-500">TAILLE</p> -->
 
 <!-- <div class="items-center justify-center flex border h-full">
     <div class="w-9/12">

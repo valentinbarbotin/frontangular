@@ -62,7 +62,11 @@ export class LoginComponent implements OnInit {
           }
           this.Router.navigate(['/']);
         } else {
-          console.log("in progress")
+          if (!this.data['login']) {
+            alert(this.data['message'])
+          } else {
+            console.log("in progress")
+          }
         }
       },
       error => {

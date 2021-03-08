@@ -1,0 +1,25 @@
+{
+    "HOME": "Home",
+    "CATALOGUE": "Catalogue",
+    "ESPACE MEMBRE": "Member area",
+    "PANIER": "Cart",
+    "TITRE": "Shop",
+    "MSG": "Welcome on the site !",
+
+    "NAME": "Name",
+    "PRIX": "Price",
+    "DESCRIPTION": "Description",
+    "AJOUTER": "Add",
+
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "LOGOUT": "Logout",
+
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRMPASSWORD": "Confirm password",
+    "NO ACCOUNT": "No account ?",
+    "HAVE ACCOUNT": "Already an account ?",
+    "CREATE ACCOUNT": "Register",
+    "GO LOGIN": "Login"
+}

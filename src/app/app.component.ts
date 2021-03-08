@@ -3,6 +3,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animation';
 import { RESTService } from './services/rest.service';
+import {TranslateService} from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
@@ -89,16 +91,24 @@ export class AppComponent {
     }
   }
 
-  switchLang(lang: string) {
-    switch (lang) {
-      case "fr":
-        this.lang = "fr"
-        break;
-      case "en":
-        this.lang = "en"
-        break;
-    }
+  switchLang(language: string) {
+    localStorage.setItem('locale', language);  
+    this.translate.use(language);  
+    
+    // switch (lang) {
+    //   case "fr":
+    //     this.lang = "fr"
+    //     break;
+    //   case "en":
+    //     this.lang = "en"
+    //     break;
+    // }
   }
+
+  changeLang(language: string) {  
+    localStorage.setItem('locale', language);  
+    this.translate.use(language);  
+  }  
 
   get etatDropdownMembre() {
     return this.showDropdownMembre ? 'show' : 'hide'
@@ -116,5 +126,22 @@ export class AppComponent {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 
-  constructor(private RESTService: RESTService) { }
+  languages = ['EN', 'FR'];
+  
+  constructor(
+    private RESTService: RESTService,
+    public translate: TranslateService
+    ) {
+
+      console.log(translate.getLangs())
+      // translate.setTranslation('en', en);
+      // translate.setTranslation('fr', fr);
+      // translate.setTranslation('fr', {
+      //   HOME: 'Accueil'
+      // });
+        
+      // translate.setDefaultLang('en');
+      // translate.use('en');
+      // translate.getTranslation("i18n/en.json")
+    }
 }

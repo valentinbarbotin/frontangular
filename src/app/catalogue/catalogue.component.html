@@ -1,15 +1,15 @@
 <div class="items-center justify-center flex h-full">
     <div class="bg-gray-50 py-8 px-5 w-3/4 rounded-lg mx-5">
         
-        <h1 class="text-2xl">Catalogue</h1>
+        <h1 class="text-2xl">{{ 'CATALOGUE' | translate }}</h1>
 
         <table class="table-fixed mt-10">
             <thead>
               <tr>
                 <th class="text-left px-5 py-2 w-1/5"></th>
-                <th class="text-left px-5 py-2 w-1/6">Nom</th>
-                <th class="text-left px-5 py-2 w-1/6">Prix</th>
-                <th class="text-left px-5 py-2">Description</th>
+                <th class="text-left px-5 py-2 w-1/6">{{ 'NAME' | translate }}</th>
+                <th class="text-left px-5 py-2 w-1/6">{{ 'PRIX' | translate }}</th>
+                <th class="text-left px-5 py-2">{{ 'DESCRIPTION' | translate }}</th>
               </tr>
             </thead>
             <tbody>
@@ -17,7 +17,7 @@
                     <td class="break-all"><img class="h-40 mx-auto py-2 " src="{{produit.img}}"></td>
                     <td class="px-5 break-all py-2 ">
                         <p class="mb-2">{{produit.nom}}</p>
-                        <button class="w-3/5 mx-auto" mat-raised-button color="primary">Ajouter</button>
+                        <button class="w-3/5 mx-auto" mat-raised-button color="primary">{{ 'AJOUTER' | translate }}</button>
                     </td>
                     <td class="px-5 break-all">{{produit.prix}} €</td>
                     <td class="px-5 break-all py-2">{{produit.description}}</td>
