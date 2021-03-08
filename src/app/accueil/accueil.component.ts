@@ -2,6 +2,8 @@ import { HttpEventType, HttpHeaderResponse, HttpResponse } from '@angular/common
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 import { RESTService } from '../services/rest.service';
+import { AppComponent } from '../app.component';
+import { Inotification } from '../interface/notification'
 
 @Component({
   selector: 'app-accueil',
@@ -15,25 +17,36 @@ export class AccueilComponent implements OnInit {
   uploadDone = false;
   file?: File | null;
 
-  testObservable() {
-    const myObservable = of(1, 2, 3);
+  // testObservable() {
+  //   const myObservable = of(1, 2, 3);
 
-    const myObserver = {
-      next: (x: any) => console.log('Observer got a next value: ' + x),
-      error: (err: any) => console.error('Observer got an error: ' + err),
-      complete: () => console.log('Observer got a complete notification'),
-    };
+  //   const myObserver = {
+  //     next: (x: any) => console.log('Observer got a next value: ' + x),
+  //     error: (err: any) => console.error('Observer got an error: ' + err),
+  //     complete: () => console.log('Observer got a complete notification'),
+  //   };
 
-    myObservable.subscribe(
-      {
-        next: (x: any) => console.log('Observer got a next value: ' + x),
-        error: (err: any) => console.error('Observer got an error: ' + err),
-        complete: () => console.log('Observer got a complete notification'),
-      }
-    );
+  //   myObservable.subscribe(
+  //     {
+  //       next: (x: any) => console.log('Observer got a next value: ' + x),
+  //       error: (err: any) => console.error('Observer got an error: ' + err),
+  //       complete: () => console.log('Observer got a complete notification'),
+  //     }
+  //   );
     
-  }
+  // }
 
+  
+
+  afficherNotif(titre: String, message: String, type: String) {
+    this.AppComponent.notification({
+      'titre': titre,
+      'message': message,
+      'type': type
+      //  check_circle_outline
+      //  error_outline
+    })
+  }
 
   makeGET() {
     console.log("requete go")
@@ -110,7 +123,8 @@ export class AccueilComponent implements OnInit {
 
 
   constructor(
-    private RESTService: RESTService
+    private RESTService: RESTService,
+    private AppComponent: AppComponent
   ) { }
 
   ngOnInit(): void {

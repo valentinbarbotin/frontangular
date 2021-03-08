@@ -58,10 +58,6 @@
         <div *ngIf="etatDropdownLang == 'show'" [@dropdownLang]="etatDropdownLang" class="hidden md:block absolute rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div role="menu">
 
-            <!-- <select #langSelect (change)="changeLang(langSelect.value)">  
-              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>  
-            </select> -->
-
             <button (click)="showDropdownLang = !showDropdownLang; switchLang('fr')" class="flex">
               <img class="w-12" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg">
             </button>
@@ -86,6 +82,22 @@
   </div>
 
 </header>
+
+<div [@notification]="etatNotification" class="absolute bg-gray-200 w-72 justify-around flex shadow-lg rounded-md ml-2 mt-4 p-2">
+  <div>
+    <mat-icon [class]="{'text-green-600' : notificationType == 'ok', 'text-red-600' : notificationType == 'error'}" class="align-bottom">{{notificationGetIcon}}</mat-icon>
+  </div>
+  
+  <div class="mr-3">
+    <h2>{{notificationTitre}}</h2>
+    <p class="break-words w-full text-gray-500">{{notificationMessage}}</p>
+  </div>
+  
+  <button class="focus:outline-none" (click)="showNotification = false" type="button">
+    <mat-icon class="align-bottom text-gray-500">close</mat-icon>
+  </button>
+  
+</div>
 
 
 <!-- <p class="xs:text-red-500 sm:text-yellow-500 md:text-green-500 lg:text-blue-500">TAILLE</p> -->

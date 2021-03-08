@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animation';
 import { RESTService } from './services/rest.service';
 import {TranslateService} from '@ngx-translate/core';
+import { Inotification } from './interface/notification'
 
 
 @Component({
@@ -32,45 +33,33 @@ import {TranslateService} from '@ngx-translate/core';
       })),
       transition('show <=> hide', animate('200ms ease-out')),
       // transition('hide => show', animate('200ms ease-in'))
+    ]),
+
+    trigger('notification', [
+      state('show', style({
+        opacity: 1
+      })),
+      state('hide', style({
+        opacity: 0
+      })),
+      transition('show => hide', animate('1000ms ease-out')),
+      transition('hide => show', animate('600ms ease-out')),
+      // transition('hide => show', animate('200ms ease-in'))
     ])
+    
   ]
 })
+
 export class AppComponent {
   title = 'Shop4u';
   showDropdownNav = "menu";
   showDropdownMembre = false;
   showDropdownLang = false;
-  lang = "fr";
+  showNotification = false;
 
-  // localization = {
-  //   fr: {
-  //     home: "Accueil",
-  //     catalogue: "Catalogue",
-  //     espaceMembre: "Espace membre",
-  //     panier: "Mon panier",
-  //   },
-  //   en: {
-  //     home: "Home",
-  //     catalogue: "Catalogue",
-  //     espaceMembre: "Member area",
-  //     panier: "Cart",
-  //   }
-  // }
-
-  localization = {
-    [this.lang]: {
-      home: "Accueil",
-      catalogue: "Catalogue",
-      espaceMembre: "Espace membre",
-      panier: "Mon panier",
-    },
-    [this.lang]: {
-      home: "Home",
-      catalogue: "Catalogue",
-      espaceMembre: "Member area",
-      panier: "Cart",
-    }
-  }
+  notificationTitre?: String;
+  notificationMessage?: String;
+  notificationType?: String;
 
   isAuth() {
     return this.RESTService.isAuth && (this.RESTService.token != "");
@@ -90,25 +79,38 @@ export class AppComponent {
       this.showDropdownMembre = false
     }
   }
+  
+  get notificationGetIcon() {
+    switch (this.notificationType) {
+      case "error":
+        return "error_outline"
+      case "ok":
+        return "check_circle_outline"
+      default:
+        return ""
+    }
+  }
+  
+  notification(data: Inotification) {
+    this.notificationTitre = data.titre
+    this.notificationMessage = data.message
+    this.notificationType = data.type
+    // this.notificationTitre = data.titre;
+    // this.notificationMessage = data.message;
+    this.showNotification = true
+    setTimeout(() => {
+      this.showNotification = false
+    }, 4000);
+  }
 
   switchLang(language: string) {
     localStorage.setItem('locale', language);  
     this.translate.use(language);  
-    
-    // switch (lang) {
-    //   case "fr":
-    //     this.lang = "fr"
-    //     break;
-    //   case "en":
-    //     this.lang = "en"
-    //     break;
-    // }
   }
 
-  changeLang(language: string) {  
-    localStorage.setItem('locale', language);  
-    this.translate.use(language);  
-  }  
+  get etatNotification() {
+    return this.showNotification ? 'show' : 'hide'
+  }
 
   get etatDropdownMembre() {
     return this.showDropdownMembre ? 'show' : 'hide'
