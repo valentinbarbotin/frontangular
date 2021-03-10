@@ -95,8 +95,6 @@ export class AppComponent {
     this.notificationTitre = data.titre
     this.notificationMessage = data.message
     this.notificationType = data.type
-    // this.notificationTitre = data.titre;
-    // this.notificationMessage = data.message;
     this.showNotification = true
     setTimeout(() => {
       this.showNotification = false
