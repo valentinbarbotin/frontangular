@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { RESTService } from '../services/rest.service';
 import { Router } from '@angular/router';
+import { AppComponent } from "../app.component"
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,16 @@ export class LoginComponent implements OnInit {
   passwordcheck = new FormControl('', [
     Validators.required
   ]);
+
+  afficherNotif(titre: String, message: String, type: String) {
+    this.AppComponent.notification({
+      'titre': titre,
+      'message': message,
+      'type': type
+      //  check_circle_outline
+      //  error_outline
+    })
+  }
 
   getErrorMessagePassword() {
     if (this.passwordcheck.hasError('required')) {
@@ -55,7 +66,7 @@ export class LoginComponent implements OnInit {
         this.data = response;
         console.log(response)
         if (this.data['login']) {
-          console.log("connecte")
+          this.afficherNotif('Connexion',this.data['message'],'ok')
           this.RESTService.isAuth = true;
           if (this.data['token']) {
             this.RESTService.token = this.data['token'];
@@ -63,7 +74,8 @@ export class LoginComponent implements OnInit {
           this.Router.navigate(['/']);
         } else {
           if (!this.data['login']) {
-            alert(this.data['message'])
+            this.afficherNotif('Connexion',this.data['message'],'error')
+            // alert(this.data['message'])
           } else {
             console.log("in progress")
           }
@@ -78,7 +90,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private RESTService: RESTService,
-    private Router: Router
+    private Router: Router,
+    private AppComponent: AppComponent
   ) { }
 
   ngOnInit(): void {

@@ -7,7 +7,7 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { PanierComponent } from './panier/panier.component';
 
 const routes: Routes = [
-  { path: '', component: AccueilComponent },
+  { path: '', component: AccueilComponent, data: {animation: 'accueil'} },
   { path: 'login', component: LoginComponent, data: {animation: 'login'} },
   { path: 'register', component: RegisterComponent, data: {animation: 'register'} },
   { path: 'catalogue', component: CatalogueComponent, data: {animation: 'catalogue'} },

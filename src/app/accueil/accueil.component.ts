@@ -17,27 +17,6 @@ export class AccueilComponent implements OnInit {
   uploadDone = false;
   file?: File | null;
 
-  // testObservable() {
-  //   const myObservable = of(1, 2, 3);
-
-  //   const myObserver = {
-  //     next: (x: any) => console.log('Observer got a next value: ' + x),
-  //     error: (err: any) => console.error('Observer got an error: ' + err),
-  //     complete: () => console.log('Observer got a complete notification'),
-  //   };
-
-  //   myObservable.subscribe(
-  //     {
-  //       next: (x: any) => console.log('Observer got a next value: ' + x),
-  //       error: (err: any) => console.error('Observer got an error: ' + err),
-  //       complete: () => console.log('Observer got a complete notification'),
-  //     }
-  //   );
-    
-  // }
-
-  
-
   afficherNotif(titre: String, message: String, type: String) {
     this.AppComponent.notification({
       'titre': titre,

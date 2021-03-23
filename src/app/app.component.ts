@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { RouterOutlet } from '@angular/router';
+import { trigger, state, style, animate, transition, group } from '@angular/animations';
+import { Router, RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animation';
 import { RESTService } from './services/rest.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -37,14 +37,22 @@ import { Inotification } from './interface/notification'
 
     trigger('notification', [
       state('show', style({
-        opacity: 1
+        opacity: 1,
       })),
       state('hide', style({
-        opacity: 0
+        opacity: 0,
+        "pointer-events": "none"
       })),
-      transition('show => hide', animate('1000ms ease-out')),
-      transition('hide => show', animate('600ms ease-out')),
-      // transition('hide => show', animate('200ms ease-in'))
+      transition('show => hide',
+        group([
+          animate('1000ms ease-out'),
+        ]),
+      ),
+      transition('hide => show',
+        group([
+          animate('600ms ease-out'),
+        ]),
+      ),
     ])
     
   ]
@@ -126,14 +134,22 @@ export class AppComponent {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 
+  checkLoading() {
+    return true
+  }
+
   languages = ['EN', 'FR'];
+
+  ngOnInit() {
+  }
   
   constructor(
+    private Router: Router,
     private RESTService: RESTService,
     public translate: TranslateService
     ) {
 
-      console.log(translate.getLangs())
+      // console.log(translate.getLangs())
       // translate.setTranslation('en', en);
       // translate.setTranslation('fr', fr);
       // translate.setTranslation('fr', {
